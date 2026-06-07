@@ -3,368 +3,370 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gauranga Gautam — 0x9r4ngu · Security Researcher</title>
-<meta name="description" content="Gauranga Gautam (0x9r4ngu) — security researcher & penetration tester. Writeups, tools, certifications, and links.">
+<title>0x9r4ngu — whoami</title>
+<meta name="description" content="Gauranga Gautam (0x9r4ngu) — security researcher & penetration tester. Writeups, tools, certifications, contact.">
 <meta name="author" content="Gauranga Gautam">
 <link rel="shortcut icon" href="images/favicon.ico">
-
-<meta property="og:title" content="Gauranga Gautam — 0x9r4ngu">
+<meta property="og:title" content="0x9r4ngu — Gauranga Gautam">
 <meta property="og:description" content="Security researcher & penetration tester. Breaking things, responsibly.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="images/avatar.png">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ════════════════════ LIGHT · RED THEME ════════════════════ */
+/* ══════════ LIGHT · RED · TERMINAL ══════════ */
 :root{
-  --font-sans:'Space Grotesk',system-ui,-apple-system,sans-serif;
-  --font-mono:'JetBrains Mono','Fira Code',ui-monospace,monospace;
-  --bg:#f6f2ea; --bg-surface:#fffdf9;
-  --bg-card:#ffffff;
-  --bg-nav:rgba(248,244,238,.82);
-  --text:#161616; --text-muted:#5c5c5c; --text-faint:#9a9a9a;
-  --heading:#0a0a0a;
-  --accent:#cc0000; --accent-h:#e00000;
-  --accent-glow:rgba(204,0,0,.18);
-  --accent-dim:rgba(204,0,0,.07);
-  --accent-ring:rgba(204,0,0,.34);
-  --border:rgba(0,0,0,.08);
-  --border-med:rgba(0,0,0,.13);
-  --grid-line:rgba(0,0,0,.028);
-  --glow:rgba(204,0,0,.05);
-  --shadow:0 2px 14px rgba(0,0,0,.06);
-  --shadow-h:0 14px 38px rgba(0,0,0,.12);
+  --mono:'JetBrains Mono','Fira Code',ui-monospace,monospace;
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --bg:#f1ece2;
+  --term:#fbf9f4;          /* terminal window body */
+  --bar:#e8e1d4;           /* title bar */
+  --text:#1c1c1c;
+  --muted:#6e6a62;         /* comments / paths */
+  --faint:#a59f93;
+  --red:#cc0000; --red-h:#e60000;
+  --amber:#b06a00;
+  --line:rgba(0,0,0,.16);  /* box-drawing / borders */
+  --line-soft:rgba(0,0,0,.08);
+  --dim:rgba(204,0,0,.07);
+  --ring:rgba(204,0,0,.30);
+  --sh:0 2px 16px rgba(60,40,20,.08);
+  --sh-h:0 16px 44px rgba(60,40,20,.16);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--font-sans);background:var(--bg);color:var(--text);
-  line-height:1.7;overflow-x:hidden;position:relative;min-height:100vh}
+body{font-family:var(--mono);background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;
+  overflow-x:hidden;position:relative;min-height:100vh;-webkit-font-smoothing:antialiased}
+/* faint grid + scanlines */
 body::before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
-    linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
-  background-size:55px 55px;animation:drift 32s linear infinite}
-body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background-image:radial-gradient(ellipse 90% 45% at 50% -5%,var(--glow) 0%,transparent 60%),
-    radial-gradient(ellipse 60% 40% at 100% 100%,var(--accent-dim) 0%,transparent 55%)}
-@keyframes drift{from{background-position:0 0,0 0}to{background-position:55px 55px,55px 55px}}
-::selection{background:var(--accent-dim);color:var(--accent)}
+  background-image:linear-gradient(rgba(0,0,0,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.022) 1px,transparent 1px);background-size:48px 48px}
+body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.012) 3px 4px);
+  mix-blend-mode:multiply}
+::selection{background:var(--red);color:#fff}
 a{color:inherit;text-decoration:none}
-::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar{width:9px;height:9px}
 ::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--accent-ring);border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:var(--accent)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem}
+::-webkit-scrollbar-thumb{background:var(--ring);border-radius:0}
+::-webkit-scrollbar-thumb:hover{background:var(--red)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 1.2rem}
+.blink{animation:bl 1.05s step-end infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:0}}
+.cursor{display:inline-block;width:.6em;height:1.05em;background:var(--red);vertical-align:-2px;margin-left:1px}
+.red{color:var(--red)} .muted{color:var(--muted)} .amber{color:var(--amber)} .faint{color:var(--faint)}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg-nav);
-  backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);
-  border-bottom:1px solid var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
-.brand{font-weight:700;font-size:1.05rem;letter-spacing:.3px}
-.brand .blink{color:var(--accent);animation:blink 1.1s step-end infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.nav-links{display:flex;align-items:center;gap:1.5rem}
-.nav-links a{font-size:.85rem;color:var(--text-muted);font-weight:500;transition:color .18s}
-.nav-links a:hover{color:var(--accent)}
-.nav-links a.cta{color:var(--accent);border:1px solid var(--accent-ring);padding:.35rem .8rem;
-  border-radius:6px;font-family:var(--font-mono);font-size:.75rem}
-.nav-links a.cta:hover{background:var(--accent-dim)}
-#navtoggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
-@media(max-width:760px){
-  .nav-links{position:fixed;top:62px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg-nav);
-    backdrop-filter:blur(20px);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .3s}
-  .nav-links.open{max-height:360px}
-  .nav-links a{width:100%;padding:.9rem 1.5rem;border-top:1px solid var(--border)}
-  .nav-links a.cta{margin:.6rem 1.5rem;width:auto;text-align:center}
+/* ══════════ NAV ══════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(241,236,226,.86);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:54px;font-size:.86rem}
+.brand{font-weight:700;letter-spacing:.3px}
+.brand .p{color:var(--red)}
+.nav-links{display:flex;align-items:center;gap:1.3rem}
+.nav-links a{color:var(--muted);transition:color .15s;white-space:nowrap}
+.nav-links a::before{content:'./';color:var(--faint)}
+.nav-links a:hover{color:var(--red)}
+.nav-links a.cta::before{content:''}
+.nav-links a.cta{color:var(--red);border:1px solid var(--ring);padding:.25rem .7rem;font-size:.78rem}
+.nav-links a.cta:hover{background:var(--dim)}
+#navtoggle{display:none;background:none;border:none;color:var(--red);font-size:1.3rem;cursor:pointer;font-family:var(--mono)}
+@media(max-width:740px){
+  .nav-links{position:fixed;top:54px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);
+    border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .3s}
+  .nav-links.open{max-height:340px}
+  .nav-links a{width:100%;padding:.85rem 1.2rem;border-top:1px solid var(--line-soft)}
+  .nav-links a.cta{margin:.6rem 1.2rem;width:auto;text-align:center}
   #navtoggle{display:block}
 }
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:8rem 1.5rem 4rem;position:relative}
-.avatar{width:140px;height:140px;border-radius:50%;object-fit:cover;
-  box-shadow:0 0 0 3px var(--accent-ring),0 0 0 7px var(--accent-dim),0 0 30px var(--accent-glow);
-  animation:pulse 3.5s ease-in-out infinite;transition:transform .32s}
-.avatar:hover{transform:scale(1.05)}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 3px var(--accent-ring),0 0 0 7px var(--accent-dim),0 0 22px var(--accent-glow)}
-  50%{box-shadow:0 0 0 3px var(--accent),0 0 0 9px var(--accent-dim),0 0 40px var(--accent-glow)}}
-.hero h1{font-size:clamp(2.3rem,6vw,3.6rem);font-weight:800;letter-spacing:-.5px;margin:1.5rem 0 .4rem;
-  background:linear-gradient(140deg,#0a0a0a 0%,#5c5c5c 55%,var(--accent) 115%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero .role{font-family:var(--font-mono);font-size:clamp(.72rem,2.2vw,.86rem);letter-spacing:2px;
-  text-transform:uppercase;color:var(--accent);opacity:.9}
-.hero .role::after{content:'_';animation:blink 1.1s step-end infinite;margin-left:2px}
-.hero p.bio{max-width:560px;margin:1.3rem auto 0;color:var(--text-muted);font-size:1.02rem}
-.tags{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.3rem}
-.tag{font-family:var(--font-mono);font-size:.7rem;padding:.28rem .65rem;border-radius:5px;
-  background:var(--accent-dim);border:1px solid var(--accent-ring);color:var(--accent);letter-spacing:.3px}
-.actions{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:2rem}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:8px;
-  font-family:var(--font-mono);font-size:.82rem;font-weight:500;border:1px solid var(--border-med);transition:all .2s;cursor:pointer}
-.btn svg{width:16px;height:16px}
-.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn.primary:hover{background:var(--accent-h);transform:translateY(-2px);box-shadow:0 8px 24px var(--accent-glow)}
-.btn.ghost{color:var(--text-muted);background:var(--bg-card)}
-.btn.ghost:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
-.scrollhint{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);font-family:var(--font-mono);
-  font-size:.65rem;letter-spacing:2px;color:var(--text-faint);text-transform:uppercase;animation:bob 2s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+/* ══════════ TERMINAL WINDOW ══════════ */
+.term{background:var(--term);border:1px solid var(--line);border-radius:9px;box-shadow:var(--sh);overflow:hidden}
+.term-bar{display:flex;align-items:center;gap:7px;padding:.55rem .8rem;background:var(--bar);border-bottom:1px solid var(--line)}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+.dot.r{background:#ff5f56}.dot.y{background:#ffbd2e}.dot.g{background:#27c93f}
+.term-title{margin-left:.5rem;font-size:.74rem;color:var(--muted);letter-spacing:.3px}
+.term-body{padding:1.1rem 1.2rem}
+/* kali prompt */
+.kp1{color:var(--red);font-weight:600}
+.kp1 b{color:var(--text)} .kp1 i{color:var(--amber);font-style:normal}
+.kp2{color:var(--red);font-weight:600}
+.cmd{color:var(--text)}
+.out{color:var(--muted)}
+.mk{color:var(--red);font-weight:600}            /* [+] markers */
 
-/* SECTIONS */
-section{padding:5rem 0;position:relative}
-.section-tag{font-family:var(--font-mono);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
-  color:var(--accent);opacity:.85;margin-bottom:.5rem}
-.section-title{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;color:var(--heading);margin-bottom:2.5rem;letter-spacing:-.3px}
-.section-title::before{content:'// ';font-family:var(--font-mono);color:var(--accent);opacity:.6;font-size:.7em}
+/* ══════════ HERO ══════════ */
+.hero{min-height:100vh;display:flex;align-items:center;padding:6.5rem 0 3rem}
+.hero .term-body{padding:1.4rem 1.5rem}
+.hero-id{display:flex;gap:1.5rem;align-items:center;margin:1rem 0 1.3rem;flex-wrap:wrap}
+.avatar{width:104px;height:104px;border-radius:8px;object-fit:cover;border:1px solid var(--line);
+  box-shadow:0 0 0 3px var(--dim),0 0 22px var(--ring);filter:grayscale(.15)}
+.hero h1{font-family:var(--sans);font-size:clamp(1.9rem,5vw,2.7rem);font-weight:700;letter-spacing:-.5px;color:var(--text);line-height:1.1}
+.hero .sub{color:var(--red);font-weight:600;font-size:.92rem;margin-top:.2rem}
+.hero .tagline{color:var(--text);margin-top:.5rem;min-height:1.5em}
+.kv{margin:.15rem 0;font-size:.9rem}
+.kv .k{color:var(--muted)}
+.badge{border:1px solid var(--ring);color:var(--red);padding:.04rem .5rem;border-radius:3px;font-size:.78rem;font-weight:600}
+.badge.live{background:var(--dim)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
+.btn{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.84rem;font-weight:500;
+  padding:.5rem 1rem;border:1px solid var(--line);background:#fff;color:var(--text);cursor:pointer;
+  border-radius:5px;transition:all .18s}
+.btn::before{content:'└─$ ';color:var(--red);font-weight:600}
+.btn:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px);box-shadow:var(--sh-h)}
+.btn.primary{background:var(--red);color:#fff;border-color:var(--red)}
+.btn.primary::before{color:#fff}
+.btn.primary:hover{background:var(--red-h);color:#fff}
 
-/* GRID CARDS */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
-.card{position:relative;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;
-  padding:1.6rem;box-shadow:var(--shadow);transition:transform .28s cubic-bezier(.4,0,.2,1),border-color .28s,box-shadow .28s;overflow:hidden;display:block}
-.card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--accent);
-  opacity:0;transition:opacity .25s;border-radius:14px 0 0 14px}
-.card:hover{transform:translateY(-5px);border-color:var(--border-med);box-shadow:var(--shadow-h)}
-.card:hover::before{opacity:1}
-.card .ico{width:42px;height:42px;border-radius:10px;background:var(--accent-dim);border:1px solid var(--accent-ring);
-  display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:1.1rem}
-.card .ico svg{width:22px;height:22px}
-.card h3{font-size:1.1rem;font-weight:600;color:var(--heading);display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
-.card:hover h3{color:var(--accent)}
-.card .arrow{margin-left:auto;color:var(--text-faint);transition:transform .25s,color .25s}
-.card:hover .arrow{color:var(--accent);transform:translate(3px,-3px)}
-.card p{font-size:.9rem;color:var(--text-muted);line-height:1.6}
-.card .url{font-family:var(--font-mono);font-size:.7rem;color:var(--text-faint);margin-top:1rem;letter-spacing:.2px}
+/* ══════════ SECTIONS ══════════ */
+section{padding:4.5rem 0;position:relative}
+.sec-label{color:var(--muted);font-size:.78rem;letter-spacing:1px}
+.sec-label b{color:var(--red)}
+.sec-cmd{font-size:1.05rem;margin:.3rem 0 1.8rem;color:var(--text)}
+.sec-cmd .pr{color:var(--red);font-weight:700}
+.sec-cmd .fl{color:var(--muted)}
 
-/* CERTS */
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
-.cert{position:relative;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
-  padding:1.2rem 1.3rem;box-shadow:var(--shadow);transition:transform .22s,border-color .22s,box-shadow .22s;display:flex;gap:1rem;align-items:flex-start}
-.cert:hover{transform:translateY(-3px);border-color:var(--accent-ring);box-shadow:var(--shadow-h)}
-.cert .num{font-family:var(--font-mono);font-size:.8rem;font-weight:600;color:var(--accent);
-  background:var(--accent-dim);border:1px solid var(--accent-ring);border-radius:7px;
-  width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cert .body{flex:1;min-width:0}
-.cert h4{font-size:.95rem;font-weight:600;color:var(--heading);line-height:1.35;margin-bottom:.2rem}
-.cert .issuer{font-size:.8rem;color:var(--text-muted)}
-.cert .verify{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);margin-top:.5rem;display:inline-flex;align-items:center;gap:.25rem;opacity:.85;transition:opacity .18s}
-.cert .verify:hover{opacity:1;text-decoration:underline}
+/* projects grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.pcard{position:relative;background:var(--term);border:1px solid var(--line);border-radius:8px;padding:1.1rem 1.2rem;
+  box-shadow:var(--sh);transition:transform .22s,border-color .22s,box-shadow .22s;display:block;overflow:hidden}
+.pcard::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--red);opacity:0;transition:opacity .2s}
+.pcard:hover{transform:translateY(-4px);border-color:var(--ring);box-shadow:var(--sh-h)}
+.pcard:hover::before{opacity:1}
+.pcard .ptop{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+.pcard .ptop .nm{font-weight:700;color:var(--text)}
+.pcard .ptop .nm::before{content:'▶ ';color:var(--red)}
+.pcard:hover .ptop .nm{color:var(--red)}
+.pcard .ok{margin-left:auto;font-size:.68rem;border:1px solid var(--ring);color:var(--red);padding:.02rem .4rem;border-radius:3px}
+.pcard p{font-size:.86rem;color:var(--muted);line-height:1.55}
+.pcard .path{margin-top:.8rem;font-size:.74rem;color:var(--faint)}
+.pcard .path::before{content:'→ ';color:var(--red)}
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:start}
-@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:2rem}}
-.about p{color:var(--text-muted);margin-bottom:1rem}
-.about strong{color:var(--text)}
-.about a{color:var(--accent);border-bottom:1px solid var(--accent-ring)}
-.skills h4{font-family:var(--font-mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;
-  color:var(--accent);opacity:.85;margin:1.2rem 0 .7rem}
-.skills h4:first-child{margin-top:0}
-.chips{display:flex;flex-wrap:wrap;gap:.5rem}
-.chip{font-family:var(--font-mono);font-size:.74rem;padding:.3rem .7rem;border-radius:6px;
-  background:var(--bg-card);border:1px solid var(--border-med);color:var(--text-muted);transition:all .18s}
-.chip:hover{color:var(--accent);border-color:var(--accent)}
+/* certs tree */
+.tree{background:var(--term);border:1px solid var(--line);border-radius:8px;box-shadow:var(--sh);padding:1.1rem 1.2rem;overflow-x:auto}
+.tree .root{color:var(--muted);margin-bottom:.4rem;font-size:.86rem}
+.tree .root b{color:var(--red)}
+.crow{display:flex;align-items:baseline;gap:.6rem;padding:.32rem 0;border-top:1px dotted var(--line-soft);white-space:nowrap}
+.crow:first-of-type{border-top:none}
+.crow .br{color:var(--faint);flex-shrink:0}
+.crow .id{color:var(--red);font-weight:600;flex-shrink:0}
+.crow .nm{color:var(--text);font-weight:500;white-space:normal}
+.crow .iss{color:var(--muted);font-size:.8rem;white-space:normal}
+.crow .vf{margin-left:auto;color:var(--red);font-size:.76rem;border:1px solid var(--ring);padding:.02rem .45rem;border-radius:3px;flex-shrink:0;transition:all .15s}
+.crow .vf:hover{background:var(--red);color:#fff}
+@media(max-width:680px){.crow{flex-wrap:wrap;white-space:normal}.crow .vf{margin-left:0}}
 
-/* CONNECT */
-.connect-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.9rem}
-.connect{display:flex;align-items:center;gap:.9rem;background:var(--bg-card);border:1px solid var(--border);
-  border-radius:12px;padding:1rem 1.2rem;box-shadow:var(--shadow);transition:transform .2s,border-color .2s,box-shadow .2s}
-.connect:hover{transform:translateY(-3px);border-color:var(--accent-ring);box-shadow:var(--shadow-h)}
-.connect .ci{width:38px;height:38px;border-radius:9px;background:var(--accent-dim);border:1px solid var(--accent-ring);
-  display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
-.connect .ci svg{width:19px;height:19px}
-.connect .lbl{font-weight:600;font-size:.9rem;color:var(--heading);line-height:1.2}
-.connect .handle{font-family:var(--font-mono);font-size:.72rem;color:var(--text-faint)}
-.connect:hover .lbl{color:var(--accent)}
+/* about + skills */
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:2.5rem;align-items:start}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:1.8rem}}
+.about p{color:var(--muted);margin-bottom:.9rem}
+.about p::before{content:'# ';color:var(--red)}
+.about strong{color:var(--text)} .about a{color:var(--red);border-bottom:1px solid var(--ring)}
+.bars{background:var(--term);border:1px solid var(--line);border-radius:8px;box-shadow:var(--sh);padding:1.1rem 1.2rem;font-size:.85rem}
+.bar{display:flex;align-items:center;gap:.6rem;margin:.45rem 0;white-space:nowrap}
+.bar .bn{color:var(--muted);width:8.5rem;flex-shrink:0}
+.bar .bv{color:var(--red);letter-spacing:-1px}
+.bar .bv .e{color:var(--line)}
+.bar .bp{color:var(--faint);font-size:.78rem}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:2.5rem 0;text-align:center}
-footer .copy{font-family:var(--font-mono);font-size:.72rem;color:var(--text-faint);letter-spacing:.3px}
+/* connect */
+.contacts{background:var(--term);border:1px solid var(--line);border-radius:8px;box-shadow:var(--sh);overflow:hidden}
+.contacts .ch{padding:.6rem 1.2rem;color:var(--muted);font-size:.82rem;border-bottom:1px solid var(--line-soft);background:var(--bar)}
+.crow2{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.2rem;border-top:1px solid var(--line-soft);transition:background .15s,padding-left .15s}
+.crow2:hover{background:var(--dim);padding-left:1.5rem}
+.crow2 .ic{color:var(--red);display:flex}.crow2 .ic svg{width:17px;height:17px}
+.crow2 .lb{color:var(--text);font-weight:600;width:6.5rem}
+.crow2 .ar{color:var(--red)}
+.crow2 .hd{color:var(--muted)}
+.crow2:hover .hd{color:var(--red)}
+.crow2 .ext{margin-left:auto;color:var(--faint);font-size:.78rem}
+.crow2:hover .ext{color:var(--red)}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+/* footer */
+footer{border-top:1px solid var(--line);padding:2.2rem 0;font-size:.82rem}
+footer .pr{color:var(--red);font-weight:600}
+footer .cp{color:var(--faint);margin-top:.5rem}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
 .reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="wrap nav-inner">
-    <a href="#top" class="brand">0x9r4ngu<span class="blink">_</span></a>
-    <button id="navtoggle" aria-label="Menu">☰</button>
-    <div class="nav-links" id="navlinks">
-      <a href="#projects">Projects</a>
-      <a href="#certs">Certs</a>
-      <a href="#connect">Connect</a>
-      <a href="https://0x9r4ngu.github.io/" target="_blank" rel="noopener">Writeups</a>
-      <a href="https://github.com/0x9r4ngu" target="_blank" rel="noopener" class="cta">GitHub ↗</a>
-    </div>
+<nav><div class="wrap nav-inner">
+  <a href="#top" class="brand">0x9r4ngu<span class="p">@</span>portfolio<span class="p blink">_</span></a>
+  <button id="navtoggle" aria-label="menu">▤</button>
+  <div class="nav-links" id="navlinks">
+    <a href="#projects">projects</a>
+    <a href="#certs">certs</a>
+    <a href="#connect">connect</a>
+    <a href="https://0x9r4ngu.github.io/" target="_blank" rel="noopener">writeups</a>
+    <a href="https://github.com/0x9r4ngu" target="_blank" rel="noopener" class="cta">[ github ↗ ]</a>
   </div>
-</nav>
+</div></nav>
 
 <!-- HERO -->
-<header class="hero" id="top">
-  <img class="avatar" src="images/avatar.png" alt="Gauranga Gautam">
-  <h1>Gauranga Gautam</h1>
-  <div class="role">Security Researcher &amp; Penetration Tester</div>
-  <p class="bio">Breaking things, responsibly. I hunt vulnerabilities across web apps, APIs, Active Directory, and cloud — then document exactly how. This is my hub for writeups, tools, and credentials.</p>
-  <div class="tags">
-    <span class="tag">Red Team</span>
-    <span class="tag">AppSec</span>
-    <span class="tag">Cloud Pentest</span>
-    <span class="tag">Bug Bounty</span>
-    <span class="tag">ISO 27001 LA</span>
+<header class="hero" id="top"><div class="wrap" style="width:100%">
+  <div class="term reveal in">
+    <div class="term-bar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="term-title">0x9r4ngu@portfolio: ~ — bash — 80×24</span>
+    </div>
+    <div class="term-body">
+      <div class="kp1">┌──(<b>0x9r4ngu</b><i>㉿</i><b>portfolio</b>)-[<span class="muted">~</span>]</div>
+      <div class="kp2">└─$ <span class="cmd">cat ./whoami.txt</span></div>
+
+      <div class="hero-id">
+        <img class="avatar" src="images/avatar.png" alt="Gauranga Gautam">
+        <div>
+          <h1>Gauranga Gautam</h1>
+          <div class="sub">&gt; Security Researcher &amp; Penetration Tester</div>
+          <div class="tagline">"<span id="type"></span><span class="cursor"></span>"</div>
+        </div>
+      </div>
+
+      <div class="kv"><span class="mk">[+]</span> <span class="k">focus &nbsp;:</span> Red Team · AppSec · Cloud Pentest · Bug Bounty</div>
+      <div class="kv"><span class="mk">[+]</span> <span class="k">certs &nbsp;:</span> ISO 27001:2022 Lead Auditor <span class="faint">(+8 verified)</span></div>
+      <div class="kv"><span class="mk">[+]</span> <span class="k">status :</span> <span class="badge live"><span id="spin" class="amber"></span> LIVE</span> open to work</div>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="https://0x9r4ngu.github.io/" target="_blank" rel="noopener">read_writeups.sh</a>
+        <a class="btn" href="#connect">connect.sh</a>
+      </div>
+      <div class="kp2" style="margin-top:1.1rem">└─$ <span class="cursor"></span></div>
+    </div>
   </div>
-  <div class="actions">
-    <a class="btn primary" href="https://0x9r4ngu.github.io/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      Read Writeups
-    </a>
-    <a class="btn ghost" href="#connect">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
-      Get in Touch
-    </a>
-  </div>
-  <div class="scrollhint">scroll ↓</div>
-</header>
+</div></header>
 
 <!-- PROJECTS -->
-<section id="projects">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="section-tag">Hosted Sites</div>
-      <h2 class="section-title">Projects &amp; Tools</h2>
-    </div>
-    <div class="grid">
-      <a class="card reveal" href="https://0x9r4ngu.github.io/" target="_blank" rel="noopener">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-        <h3>Writeups<span class="arrow">↗</span></h3>
-        <p>My security blog — penetration test reports, bug bounty findings, and hands-on writeups across web, AD, AWS, and more.</p>
-        <div class="url">0x9r4ngu.github.io</div>
-      </a>
-      <a class="card reveal" href="https://0x9r4ngu.github.io/cvssv4/" target="_blank" rel="noopener">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></div>
-        <h3>CVSS v4 Calculator<span class="arrow">↗</span></h3>
-        <p>A fast, clean CVSS v4.0 scoring calculator for rating vulnerability severity during assessments and reports.</p>
-        <div class="url">0x9r4ngu.github.io/cvssv4</div>
-      </a>
-      <a class="card reveal" href="https://0x9r4ngu.github.io/qr-awareness/" target="_blank" rel="noopener">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="14" x2="14" y2="21"/><line x1="21" y1="14" x2="21" y2="21"/></svg></div>
-        <h3>QR Awareness<span class="arrow">↗</span></h3>
-        <p>A security-awareness demo showing how easily a malicious QR code can lead somewhere unexpected. Don't trust every QR.</p>
-        <div class="url">0x9r4ngu.github.io/qr-awareness</div>
-      </a>
-    </div>
+<section id="projects"><div class="wrap">
+  <div class="reveal">
+    <div class="sec-label">// <b>PROJECTS</b> &amp; TOOLS</div>
+    <div class="sec-cmd"><span class="pr">❯</span> ls -la <span class="fl">~/projects</span></div>
   </div>
-</section>
+  <div class="grid">
+    <a class="pcard reveal" href="https://0x9r4ngu.github.io/" target="_blank" rel="noopener">
+      <div class="ptop"><span class="nm">writeups</span><span class="ok">[200 OK]</span></div>
+      <p>My security blog — pentest reports, bug bounty findings, and hands-on writeups across web, AD &amp; AWS.</p>
+      <div class="path">0x9r4ngu.github.io</div>
+    </a>
+    <a class="pcard reveal" href="https://0x9r4ngu.github.io/cvssv4/" target="_blank" rel="noopener">
+      <div class="ptop"><span class="nm">cvss-v4-calc</span><span class="ok">[200 OK]</span></div>
+      <p>A fast, clean CVSS v4.0 scoring calculator for rating vulnerability severity in reports.</p>
+      <div class="path">0x9r4ngu.github.io/cvssv4</div>
+    </a>
+    <a class="pcard reveal" href="https://0x9r4ngu.github.io/qr-awareness/" target="_blank" rel="noopener">
+      <div class="ptop"><span class="nm">qr-awareness</span><span class="ok">[ ! POC ]</span></div>
+      <p>Awareness demo: how easily a malicious QR can redirect somewhere unexpected. Don't trust every QR.</p>
+      <div class="path">0x9r4ngu.github.io/qr-awareness</div>
+    </a>
+  </div>
+</div></section>
 
-<!-- CERTIFICATIONS -->
-<section id="certs">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="section-tag">Verified · 9</div>
-      <h2 class="section-title">Certifications</h2>
-    </div>
-    <div class="cert-grid">
-      <div class="cert reveal"><div class="num">01</div><div class="body"><h4>ISO/IEC 27001:2022 Lead Auditor</h4><div class="issuer">Mastermind Assurance</div><a class="verify" href="https://learn.mastermindassurance.com/certificates/jlvktb8mhz" target="_blank" rel="noopener">Verify ↗</a></div></div>
-      <div class="cert reveal"><div class="num">02</div><div class="body"><h4>Certified Red Team Analyst (CRTA)</h4><div class="issuer">CyberWarFare Labs · 2026</div><a class="verify" href="https://labs.cyberwarfare.live/credential/achievement/6968ae1a6d896ee8346ffe12" target="_blank" rel="noopener">Verify ↗</a></div></div>
-      <div class="cert reveal"><div class="num">03</div><div class="body"><h4>Multi-Cloud Red Team Analyst (MCRTA)</h4><div class="issuer">CyberWarFare Labs · 2026</div><a class="verify" href="https://labs.cyberwarfare.live/credential/achievement/695682d0c693d19893c3015f" target="_blank" rel="noopener">Verify ↗</a></div></div>
-      <div class="cert reveal"><div class="num">04</div><div class="body"><h4>Web Red Team Analyst (Web-RTA)</h4><div class="issuer">CyberWarFare Labs · 2026</div><a class="verify" href="https://labs.cyberwarfare.live/credential/achievement/695a0557809709588f9dc0e9" target="_blank" rel="noopener">Verify ↗</a></div></div>
-      <div class="cert reveal"><div class="num">05</div><div class="body"><h4>Certified AppSec Practitioner (CAP)</h4><div class="issuer">The SecOps Group · 2025</div><a class="verify" href="https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXbPI2DqvZ%2B19mFyMvrbnQOcpIejQDc0ROuSu9Ay6LGtEaibgIAesxNhZJUiWcJrkvh3FqB8ywrC%2BfzZJ9x%2FIP9M%3D" target="_blank" rel="noopener">Verify ↗</a></div></div>
-      <div class="cert reveal"><div class="num">06</div><div class="body"><h4>Certified Mobile Pentester (CMPen-Android)</h4><div class="issuer">The SecOps Group</div><a class="verify" href="https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXacyG7ZC52p%2BuRBdjAN2nbO1yQV7aI1l2yhYTYqXA11s3We8ZKBLpSCV9Xj4vRkQp%2F3el5wjC6Ppf40nx199Ozo%3D" target="_blank" rel="noopener">Verify ↗</a></div></div>
-      <div class="cert reveal"><div class="num">07</div><div class="body"><h4>AWS Academy Cloud Architecting</h4><div class="issuer">Amazon Web Services</div><a class="verify" href="https://www.credly.com/badges/60fc69ad-a9a2-4679-9cc2-8e4b8c6c43d9/public_url" target="_blank" rel="noopener">Verify ↗</a></div></div>
-      <div class="cert reveal"><div class="num">08</div><div class="body"><h4>Cybersecurity Educator Professional (CCEP)</h4><div class="issuer">Red Team Leaders</div><a class="verify" href="https://courses.redteamleaders.com/exam-completion/3a5d783c58e0fc32" target="_blank" rel="noopener">Verify ↗</a></div></div>
-      <div class="cert reveal"><div class="num">09</div><div class="body"><h4>API Security Certification</h4><div class="issuer">APIsec University</div><a class="verify" href="https://www.credly.com/badges/4288e133-2742-43ac-ab8e-4b97f78b5c83" target="_blank" rel="noopener">Verify ↗</a></div></div>
-    </div>
+<!-- CERTS -->
+<section id="certs"><div class="wrap">
+  <div class="reveal">
+    <div class="sec-label">// <b>CERTIFICATIONS</b> · 9 verified</div>
+    <div class="sec-cmd"><span class="pr">❯</span> tree <span class="fl">~/certs</span></div>
   </div>
-</section>
+  <div class="tree reveal">
+    <div class="root"><span class="red">~/certs</span> &nbsp;<span class="faint"># 9 entries · all verified</span></div>
+    <div class="crow"><span class="br">├─</span><span class="id">[01]</span><span class="nm">ISO/IEC 27001:2022 Lead Auditor</span><span class="iss">· Mastermind</span><a class="vf" href="https://learn.mastermindassurance.com/certificates/jlvktb8mhz" target="_blank" rel="noopener">verify ↗</a></div>
+    <div class="crow"><span class="br">├─</span><span class="id">[02]</span><span class="nm">Certified Red Team Analyst (CRTA)</span><span class="iss">· CyberWarFare · 2026</span><a class="vf" href="https://labs.cyberwarfare.live/credential/achievement/6968ae1a6d896ee8346ffe12" target="_blank" rel="noopener">verify ↗</a></div>
+    <div class="crow"><span class="br">├─</span><span class="id">[03]</span><span class="nm">Multi-Cloud Red Team Analyst (MCRTA)</span><span class="iss">· CyberWarFare · 2026</span><a class="vf" href="https://labs.cyberwarfare.live/credential/achievement/695682d0c693d19893c3015f" target="_blank" rel="noopener">verify ↗</a></div>
+    <div class="crow"><span class="br">├─</span><span class="id">[04]</span><span class="nm">Web Red Team Analyst (Web-RTA)</span><span class="iss">· CyberWarFare · 2026</span><a class="vf" href="https://labs.cyberwarfare.live/credential/achievement/695a0557809709588f9dc0e9" target="_blank" rel="noopener">verify ↗</a></div>
+    <div class="crow"><span class="br">├─</span><span class="id">[05]</span><span class="nm">Certified AppSec Practitioner (CAP)</span><span class="iss">· The SecOps Group · 2025</span><a class="vf" href="https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXbPI2DqvZ%2B19mFyMvrbnQOcpIejQDc0ROuSu9Ay6LGtEaibgIAesxNhZJUiWcJrkvh3FqB8ywrC%2BfzZJ9x%2FIP9M%3D" target="_blank" rel="noopener">verify ↗</a></div>
+    <div class="crow"><span class="br">├─</span><span class="id">[06]</span><span class="nm">Certified Mobile Pentester (CMPen-Android)</span><span class="iss">· The SecOps Group</span><a class="vf" href="https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXacyG7ZC52p%2BuRBdjAN2nbO1yQV7aI1l2yhYTYqXA11s3We8ZKBLpSCV9Xj4vRkQp%2F3el5wjC6Ppf40nx199Ozo%3D" target="_blank" rel="noopener">verify ↗</a></div>
+    <div class="crow"><span class="br">├─</span><span class="id">[07]</span><span class="nm">AWS Academy Cloud Architecting</span><span class="iss">· Amazon Web Services</span><a class="vf" href="https://www.credly.com/badges/60fc69ad-a9a2-4679-9cc2-8e4b8c6c43d9/public_url" target="_blank" rel="noopener">verify ↗</a></div>
+    <div class="crow"><span class="br">├─</span><span class="id">[08]</span><span class="nm">Cybersecurity Educator Professional (CCEP)</span><span class="iss">· Red Team Leaders</span><a class="vf" href="https://courses.redteamleaders.com/exam-completion/3a5d783c58e0fc32" target="_blank" rel="noopener">verify ↗</a></div>
+    <div class="crow"><span class="br">└─</span><span class="id">[09]</span><span class="nm">API Security Certification</span><span class="iss">· APIsec University</span><a class="vf" href="https://www.credly.com/badges/4288e133-2742-43ac-ab8e-4b97f78b5c83" target="_blank" rel="noopener">verify ↗</a></div>
+  </div>
+</div></section>
 
 <!-- ABOUT -->
-<section id="about">
-  <div class="wrap about-grid">
+<section id="about"><div class="wrap">
+  <div class="reveal">
+    <div class="sec-label">// <b>ABOUT</b></div>
+    <div class="sec-cmd"><span class="pr">❯</span> man <span class="fl">0x9r4ngu</span></div>
+  </div>
+  <div class="about-grid">
     <div class="about reveal">
-      <div class="section-tag">About</div>
-      <h2 class="section-title">Who I Am</h2>
-      <p>I'm <strong>Gauranga Gautam</strong> — known online as <strong>0x9r4ngu</strong>. I work in offensive security: web application and API penetration testing, Active Directory attacks, cloud red teaming, and bug bounty hunting. I care about understanding <em>why</em> a vulnerability exists, not just popping it — and I document everything.</p>
-      <p>Most of my published work lives on my <a href="https://0x9r4ngu.github.io/" target="_blank" rel="noopener">writeups blog</a> — real assessment reports and step-by-step exploitation. I also build small security tools like the CVSS v4 calculator and awareness demos.</p>
+      <p>I'm <strong>Gauranga Gautam</strong> — aka <strong>0x9r4ngu</strong>. Offensive security: web &amp; API pentesting, Active Directory attacks, cloud red teaming, and bug bounty. I care about <em>why</em> a bug exists, not just popping it — and I document everything.</p>
+      <p>Most published work lives on my <a href="https://0x9r4ngu.github.io/" target="_blank" rel="noopener">writeups blog</a> — real assessment reports and step-by-step exploitation. I also ship small security tools.</p>
     </div>
-    <div class="skills reveal">
-      <h4>Offensive</h4>
-      <div class="chips">
-        <span class="chip">Web App Pentest</span>
-        <span class="chip">API Security</span>
-        <span class="chip">Active Directory</span>
-        <span class="chip">Cloud Red Team</span>
-        <span class="chip">Bug Bounty</span>
-        <span class="chip">Mobile (Android)</span>
-      </div>
-      <h4>Tooling</h4>
-      <div class="chips">
-        <span class="chip">Burp Suite</span>
-        <span class="chip">Recon</span>
-        <span class="chip">AWS</span>
-        <span class="chip">CVSS</span>
-        <span class="chip">ISO 27001</span>
-      </div>
+    <div class="bars reveal">
+      <div class="bar"><span class="bn">web_pentest</span><span class="bv">██████████<span class="e">░░</span></span><span class="bp">90%</span></div>
+      <div class="bar"><span class="bn">api_security</span><span class="bv">█████████<span class="e">░░░</span></span><span class="bp">82%</span></div>
+      <div class="bar"><span class="bn">active_dir</span><span class="bv">████████<span class="e">░░░░</span></span><span class="bp">76%</span></div>
+      <div class="bar"><span class="bn">cloud_redteam</span><span class="bv">███████<span class="e">░░░░░</span></span><span class="bp">70%</span></div>
+      <div class="bar"><span class="bn">mobile_android</span><span class="bv">██████<span class="e">░░░░░░</span></span><span class="bp">62%</span></div>
     </div>
   </div>
-</section>
+</div></section>
 
 <!-- CONNECT -->
-<section id="connect">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="section-tag">Tap · Connect · Verify</div>
-      <h2 class="section-title">Connect</h2>
-    </div>
-    <div class="connect-grid">
-      <a class="connect reveal" href="https://www.linkedin.com/in/gaurangagautam/" target="_blank" rel="noopener">
-        <div class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 17.34V10.4H6.03v6.94h2.31zM7.19 9.36a1.34 1.34 0 1 0 0-2.68 1.34 1.34 0 0 0 0 2.68zm10.15 7.98v-3.8c0-2.03-1.08-2.98-2.53-2.98-1.17 0-1.69.64-1.98 1.09v-.94h-2.31c.03.65 0 6.94 0 6.94h2.31v-3.88c0-.21.02-.42.08-.57.16-.42.55-.85 1.19-.85.84 0 1.17.64 1.17 1.57v3.73h2.31z"/></svg></div>
-        <div><div class="lbl">LinkedIn</div><div class="handle">Gauranga Gautam</div></div>
-      </a>
-      <a class="connect reveal" href="https://github.com/0x9r4ngu" target="_blank" rel="noopener">
-        <div class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></div>
-        <div><div class="lbl">GitHub</div><div class="handle">@0x9r4ngu</div></div>
-      </a>
-      <a class="connect reveal" href="https://x.com/0x9r4ngu" target="_blank" rel="noopener">
-        <div class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.5h3.5l-7.6 8.7L23.7 22h-7l-5.5-7.2L4.9 22H1.4l8.1-9.3L.7 1.5h7.2l5 6.6 5.9-6.6zm-1.2 18.4h1.9L6.4 3.4H4.3l13.4 16.5z"/></svg></div>
-        <div><div class="lbl">X (Twitter)</div><div class="handle">@0x9r4ngu</div></div>
-      </a>
-      <a class="connect reveal" href="https://discordid.netlify.app/?id=937335684681850890" target="_blank" rel="noopener">
-        <div class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.4a18.3 18.3 0 0 1 4.3 1.4 16.6 16.6 0 0 0-14.9 0A18.3 18.3 0 0 1 8.8 3.4L8.6 3a19.8 19.8 0 0 0-4.9 1.4C.6 9 0 13.4.3 17.8A19.9 19.9 0 0 0 6.4 21l.4-.6a13.6 13.6 0 0 1-2.1-1l.5-.4a14.2 14.2 0 0 0 12.4 0l.5.4a13.6 13.6 0 0 1-2.1 1l.4.6a19.9 19.9 0 0 0 6.1-3.2c.4-5.1-.6-9.5-2.6-13.4zM8.1 15.3c-1.2 0-2.2-1.1-2.2-2.4S6.9 10.5 8.1 10.5s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4zm7.8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4z"/></svg></div>
-        <div><div class="lbl">Discord</div><div class="handle">0x9r4ngu</div></div>
-      </a>
-      <a class="connect reveal" href="https://www.instagram.com/0x9r4ngu/" target="_blank" rel="noopener">
-        <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></div>
-        <div><div class="lbl">Instagram</div><div class="handle">@0x9r4ngu</div></div>
-      </a>
-      <a class="connect reveal" href="https://www.pinterest.com/0x9r4ngu/" target="_blank" rel="noopener">
-        <div class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 7.8 22.7c-.1-.9-.2-2.3 0-3.3l1.3-5.6s-.3-.7-.3-1.7c0-1.6.9-2.8 2.1-2.8 1 0 1.5.7 1.5 1.6 0 1-.6 2.5-1 3.9-.3 1.1.6 2 1.7 2 2 0 3.5-2.1 3.5-5.2 0-2.7-2-4.6-4.7-4.6a4.9 4.9 0 0 0-5.1 4.9c0 1 .4 2 .8 2.6l-.3 1.3c-.1.3-.3.4-.6.2-1.2-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.7-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.5-2.2 6.3-5.2 6.3-1 0-2-.5-2.3-1.2l-.6 2.4c-.2.9-.8 2-1.2 2.6A11.5 11.5 0 1 0 12 .5z"/></svg></div>
-        <div><div class="lbl">Pinterest</div><div class="handle">@0x9r4ngu</div></div>
-      </a>
-    </div>
+<section id="connect"><div class="wrap">
+  <div class="reveal">
+    <div class="sec-label">// <b>CONNECT</b> · tap · verify</div>
+    <div class="sec-cmd"><span class="pr">❯</span> cat <span class="fl">~/.contacts</span></div>
   </div>
-</section>
+  <div class="contacts reveal">
+    <div class="ch"># 6 channels — pick your poison</div>
+    <a class="crow2" href="https://www.linkedin.com/in/gaurangagautam/" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 17.34V10.4H6.03v6.94h2.31zM7.19 9.36a1.34 1.34 0 1 0 0-2.68 1.34 1.34 0 0 0 0 2.68zm10.15 7.98v-3.8c0-2.03-1.08-2.98-2.53-2.98-1.17 0-1.69.64-1.98 1.09v-.94h-2.31c.03.65 0 6.94 0 6.94h2.31v-3.88c0-.21.02-.42.08-.57.16-.42.55-.85 1.19-.85.84 0 1.17.64 1.17 1.57v3.73h2.31z"/></svg></span>
+      <span class="lb">linkedin</span><span class="ar">→</span><span class="hd">Gauranga Gautam</span><span class="ext">[↗]</span></a>
+    <a class="crow2" href="https://github.com/0x9r4ngu" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></span>
+      <span class="lb">github</span><span class="ar">→</span><span class="hd">@0x9r4ngu</span><span class="ext">[↗]</span></a>
+    <a class="crow2" href="https://x.com/0x9r4ngu" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.5h3.5l-7.6 8.7L23.7 22h-7l-5.5-7.2L4.9 22H1.4l8.1-9.3L.7 1.5h7.2l5 6.6 5.9-6.6zm-1.2 18.4h1.9L6.4 3.4H4.3l13.4 16.5z"/></svg></span>
+      <span class="lb">x</span><span class="ar">→</span><span class="hd">@0x9r4ngu</span><span class="ext">[↗]</span></a>
+    <a class="crow2" href="https://discordid.netlify.app/?id=937335684681850890" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.4a18.3 18.3 0 0 1 4.3 1.4 16.6 16.6 0 0 0-14.9 0A18.3 18.3 0 0 1 8.8 3.4L8.6 3a19.8 19.8 0 0 0-4.9 1.4C.6 9 0 13.4.3 17.8A19.9 19.9 0 0 0 6.4 21l.4-.6a13.6 13.6 0 0 1-2.1-1l.5-.4a14.2 14.2 0 0 0 12.4 0l.5.4a13.6 13.6 0 0 1-2.1 1l.4.6a19.9 19.9 0 0 0 6.1-3.2c.4-5.1-.6-9.5-2.6-13.4zM8.1 15.3c-1.2 0-2.2-1.1-2.2-2.4S6.9 10.5 8.1 10.5s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4zm7.8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4z"/></svg></span>
+      <span class="lb">discord</span><span class="ar">→</span><span class="hd">0x9r4ngu</span><span class="ext">[↗]</span></a>
+    <a class="crow2" href="https://www.instagram.com/0x9r4ngu/" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></span>
+      <span class="lb">instagram</span><span class="ar">→</span><span class="hd">@0x9r4ngu</span><span class="ext">[↗]</span></a>
+    <a class="crow2" href="https://www.pinterest.com/0x9r4ngu/" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 7.8 22.7c-.1-.9-.2-2.3 0-3.3l1.3-5.6s-.3-.7-.3-1.7c0-1.6.9-2.8 2.1-2.8 1 0 1.5.7 1.5 1.6 0 1-.6 2.5-1 3.9-.3 1.1.6 2 1.7 2 2 0 3.5-2.1 3.5-5.2 0-2.7-2-4.6-4.7-4.6a4.9 4.9 0 0 0-5.1 4.9c0 1 .4 2 .8 2.6l-.3 1.3c-.1.3-.3.4-.6.2-1.2-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.7-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.5-2.2 6.3-5.2 6.3-1 0-2-.5-2.3-1.2l-.6 2.4c-.2.9-.8 2-1.2 2.6A11.5 11.5 0 1 0 12 .5z"/></svg></span>
+      <span class="lb">pinterest</span><span class="ar">→</span><span class="hd">@0x9r4ngu</span><span class="ext">[↗]</span></a>
+  </div>
+</div></section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="copy">© <span id="yr"></span> Gauranga Gautam · 0x9r4ngu — Tap · Connect · Verify · <span style="color:var(--accent)">♦</span></div>
-  </div>
-</footer>
+<footer><div class="wrap">
+  <div><span class="pr">0x9r4ngu@portfolio</span>:<span class="red">~</span>$ exit<span class="cursor"></span></div>
+  <div class="cp"># © <span id="yr"></span> Gauranga Gautam · 0x9r4ngu — tap · connect · verify</div>
+</div></footer>
 
 <script>
 (function(){
+  // mobile nav
   var t=document.getElementById('navtoggle'),l=document.getElementById('navlinks');
   t.addEventListener('click',function(){l.classList.toggle('open')});
   l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open')})});
+  // year
   document.getElementById('yr').textContent=new Date().getFullYear();
+  // typing tagline
+  var phrases=['Breaking things, responsibly.','sudo find / -name vuln','exploit ? report : repeat','stay curious, stay ethical.'];
+  var ty=document.getElementById('type'),pi=0,ci=0,del=false;
+  function tick(){
+    var w=phrases[pi];
+    ty.textContent=del?w.slice(0,ci--):w.slice(0,ci++);
+    if(!del&&ci>w.length){del=true;setTimeout(tick,1600);return;}
+    if(del&&ci<0){del=false;ci=0;pi=(pi+1)%phrases.length;setTimeout(tick,250);return;}
+    setTimeout(tick,del?38:70);
+  }
+  tick();
+  // braille spinner
+  var fr='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'.split(''),si=0,sp=document.getElementById('spin');
+  setInterval(function(){sp.textContent=fr[si++%fr.length];},90);
+  // reveal
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){
       if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=Math.min(i*55,300)+'ms';io.observe(el)});
+    document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=Math.min(i*45,260)+'ms';io.observe(el)});
   }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})}
 })();
 </script>
